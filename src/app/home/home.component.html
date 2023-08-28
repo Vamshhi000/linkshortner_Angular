@@ -1,0 +1,36 @@
+
+<mat-toolbar color="primary">
+
+    <span>Link Shortener</span>
+    
+  </mat-toolbar>
+  
+  <div class="container">
+    <form [formGroup]="urlForm" class="wide-form">
+  
+      <mat-form-field class="wide-input">
+        <mat-label>Url</mat-label>
+        <input matInput type="url"
+               placeholder="Enter valid Url id" formControlName='originalLink'>
+  
+        <mat-error *ngIf="urlForm.get('originalLink').errors && urlForm.get('originalLink').errors.required">
+          Please enter a valid Url address
+        </mat-error>
+      </mat-form-field>
+  
+    </form>
+    <button mat-raised-button color="primary" (click)="generate()">Generate</button>
+
+    <mat-card class="card-link" *ngIf="isGenerated">
+        <mat-card-header >
+          <mat-card-title class="center-title">                                                 
+          <a id="linkElement" href="{{originalLink}}" target="_blank" (click)="validateLink()">http://urlshortnerapp.s3-website-us-west-2.amazonaws.com/home/?url={{shortlink}}</a>
+          </mat-card-title>
+         
+        </mat-card-header>
+      </mat-card>
+  </div>
+  
+ 
+  
+ 
